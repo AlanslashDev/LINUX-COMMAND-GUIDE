@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linux Commands Showcase</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Times New Roman', sans-serif;
+            background: linear-gradient(120deg, #1e293b, #64748b);
+            color: #f0f0f0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            background-color: #1e293b;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+
+        .header {
+            padding: 20px;
+            text-align: center;
+            background: #0f172a;
+            color: #facc15;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+
+        .commands-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            padding: 20px;
+            gap: 20px;
+        }
+
+        .command-card {
+            background: #334155;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            padding: 15px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .command-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .command-card h2 {
+            margin: 10px 0;
+            font-size: 1.5rem;
+            color: #facc15;
+        }
+
+        .command-card p {
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        .command-card .icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: #38bdf8;
+        }
+
+        .syntax {
+            background: #475569;
+            padding: 10px;
+            border-radius: 8px;
+            color: #f8fafc;
+            margin-top: 10px;
+            font-family: monospace;
+            font-size: 0.9rem;
+        }
+
+        .command-card input {
+            display: none;
+        }
+
+        .command-card img {
+            display: none;
+            margin-top: 15px;
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .command-card input:checked + label img {
+            display: block;
+        }
+
+        .footer {
+            margin-top: 20px;
+            text-align: center;
+            color: #cbd5e1;
+            font-size: 0.9rem;
+        }
+
+        .footer a {
+            color: #facc15;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            .commands-list {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header h1 {
+                font-size: 1.5rem;
+            }
+            .commands-list {
+                grid-template-columns: 1fr;
+            }
+            .footer p {
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Linux Commands Showcase</h1>
+            <p>Explore essential Linux commands with descriptions and syntax examples.</p>
+        </div>
+        <section class="commands-list">
+            <!-- Command Cards -->
+            <div class="command-card">
+                <input type="checkbox" id="ls" />
+                <label for="ls">
+                    <div class="icon"><i class="fas fa-folder-open"></i></div>
+                    <h2>ls</h2>
+                    <p>Lists all files and directories in the current directory.</p>
+                    <div class="syntax">Syntax: ls [OPTION]... [FILE]...</div>
+                    <img src="ls.png" alt="ls command example">
+                </label>
+            </div>
+            <div class="command-card">
+                <input type="checkbox" id="cd" />
+                <label for="cd">
+                    <div class="icon"><i class="fas fa-folder"></i></div>
+                    <h2>cd</h2>
+                    <p>Changes the current directory to the specified path.</p>
+                    <div class="syntax">Syntax: cd [DIRECTORY]</div>
+                    <img src="cd.png" alt="cd command example">
+                </label>
+            </div>
+            <div class="command-card">
+                <input type="checkbox" id="pwd" />
+                <label for="pwd">
+                    <div class="icon"><i class="fas fa-map-marked-alt"></i></div>
+                    <h2>pwd</h2>
+                    <p>Displays the full path of the current working directory.</p>
+                    <div class="syntax">Syntax: pwd</div>
+                    <img src="pwd.png" alt="pwd command example">
+                </label>
+            </div>
+            <div class="command-card">
+                <input type="checkbox" id="mkdir" />
+                <label for="mkdir">
+                    <div class="icon"><i class="fas fa-folder-plus"></i></div>
+                    <h2>mkdir</h2>
+                    <p>Creates a new directory with the specified name.</p>
+                    <div class="syntax">Syntax: mkdir [DIRECTORY]</div>
+                    <img src="mkdir.png" alt="mkdir command example">
+                </label>
+            </div>
+            <div class="command-card">
+                <input type="checkbox" id="rmdir" />
+                <label for="rmdir">
+                    <div class="icon"><i class="fas fa-trash-alt"></i></div>
+                    <h2>rmdir/rm</h2>
+                    <p>Removes directories (rmdir) or files (rm).</p>
+                    <div class="syntax">Syntax: rmdir [DIRECTORY] | rm [OPTION]... [FILE]...</div>
+                    <img src="rmdir.png" alt="rmdir command example">
+                </label>
+            </div>
+            <div class="command-card">
+                <input type="checkbox" id="cp" />
+                <label for="cp">
+                    <div class="icon"><i class="fas fa-copy"></i></div>
+                    <h2>cp</h2>
+                    <p>Copies files or directories from one location to another.</p>
+                    <div class="syntax">Syntax: cp [OPTION]... SOURCE DEST</div>
+                    <img src="cp.png" alt="cp command example">
+                </label>
+            </div>
+            <div class="command-card">
+                <input type="checkbox" id="mv" />
+                <label for="mv">
+                    <div class="icon"><i class="fas fa-exchange-alt"></i></div>
+                    <h2>mv</h2>
+                    <p>Moves or renames files or directories.</p>
+                    <div class="syntax">Syntax: mv [OPTION]... SOURCE DEST</div>
+                    <img src="mv.png" alt="mv command example">
+                </label>
+            </div>
+            <div class="command-card">
+                <input type="checkbox" id="cat" />
+                <label for="cat">
+                    <div class="icon"><i class="fas fa-file-alt"></i></div>
+                    <h2>cat</h2>
+                    <p>Displays the contents of a file or concatenates files.</p>
+                    <div class="syntax">Syntax: cat [OPTION]... [FILE]...</div>
+                    <img src="cat.png" alt="cat command example">
+                </label>
+            </div>
+            <div class="command-card">
+                <input type="checkbox" id="find" />
+                <label for="find">
+                    <div class="icon"><i class="fas fa-search"></i></div>
+                    <h2>find</h2>
+                    <p>Searches for files and directories in a directory hierarchy.</p>
+                    <div class="syntax">Syntax: find [PATH] [EXPRESSION]</div>
+                    <img src="find.png" alt="find command example">
+                </label>
+            </div>
+            <div class="command-card">
+                <input type="checkbox" id="grep" />
+                <label for="grep">
+                    <div class="icon"><i class="fas fa-filter"></i></div>
+                    <h2>grep</h2>
+                    <p>Searches for a pattern in files or outputs.</p>
+                    <div class="syntax">Syntax: grep [OPTION]... PATTERN [FILE]...</div>
+                    <img src="grep.png" alt="grep command example">
+                </label>
+            </div>
+        </section>
+    </div>
+    <footer class="footer">
+        <p>Developed with ❤️ for <a href="#">Linux learners</a>. Practice and master Linux commands!</p>
+    </footer>
+</body>
+</html>
